@@ -1,4 +1,5 @@
 import 'package:dice_calculator/modules/home/dice_roller/DiceRollerPage.dart';
+import 'package:dice_calculator/modules/home/history/HistoryPage.dart';
 import 'package:dice_calculator/shared/themes/AppColors.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -33,9 +34,7 @@ class HomePage extends StatelessWidget {
               color: Colors.red,
             ),
             Container(color: Colors.blue),
-            Container(
-              color: Colors.green,
-            ),
+            HistoryPage(),
             Container(
               color: Colors.orange,
             ),

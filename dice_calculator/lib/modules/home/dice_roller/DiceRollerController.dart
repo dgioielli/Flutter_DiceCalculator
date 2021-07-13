@@ -18,7 +18,9 @@ class DiceRollerController {
     _dice = sides;
     _value = RollDiceService.rolldice(sides: _dice);
     result = _value <= 0 ? "-------" : "D${_dice} = ${_value}";
-    historyRepository
-        .addRollerItem(HistoryModel(key: "D${_dice}", value: "${_value}"));
+    historyRepository.addRollerItem(HistoryModel(
+      key: "D${_dice} = ${_value}",
+      value: "[${_value}]",
+    ));
   }
 }
