@@ -1,15 +1,21 @@
+import 'package:dice_calculator/modules/home/history/HistoryController.dart';
 import 'package:dice_calculator/shared/themes/AppColors.dart';
+import 'package:dice_calculator/shared/widgets/history_tile/HistoryTile.dart';
 import 'package:flutter/material.dart';
 
 class HistoryPage extends StatelessWidget {
-  const HistoryPage({Key? key}) : super(key: key);
+  final controller = HistoryController();
+  HistoryPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       color: AppColors.background,
       child: Column(
-        children: [],
+        children: controller
+            .getAllHistory()
+            .map((e) => HistoryTile(model: e))
+            .toList(),
       ),
     );
   }

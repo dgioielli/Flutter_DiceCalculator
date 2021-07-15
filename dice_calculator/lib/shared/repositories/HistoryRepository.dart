@@ -29,4 +29,6 @@ class HistoryRepository {
       calculatorList.removeAt(0);
     }
   }
+
+  List<HistoryModel> getAll() => fullList;
 }
