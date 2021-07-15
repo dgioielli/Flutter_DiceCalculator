@@ -5,6 +5,6 @@ class HistoryController {
   final historyRepository = HistoryRepository();
 
   List<HistoryModel> getAllHistory() {
-    return historyRepository.getAll();
+    return historyRepository.getAll().reversed.toList();
   }
 }

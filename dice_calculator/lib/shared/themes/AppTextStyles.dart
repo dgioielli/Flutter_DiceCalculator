@@ -13,4 +13,14 @@ class AppTextStyles {
     fontWeight: FontWeight.w500,
     color: AppColors.secondary,
   );
+  static final historyTileTitle = GoogleFonts.varelaRound(
+    fontSize: 20,
+    fontWeight: FontWeight.w500,
+    color: AppColors.secondary,
+  );
+  static final historyTileSubTitle = GoogleFonts.varelaRound(
+    fontSize: 18,
+    fontWeight: FontWeight.w400,
+    color: AppColors.secondary,
+  );
 }

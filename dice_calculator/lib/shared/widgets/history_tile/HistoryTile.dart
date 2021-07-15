@@ -1,4 +1,6 @@
 import 'package:dice_calculator/shared/models/HistoryModel.dart';
+import 'package:dice_calculator/shared/themes/AppColors.dart';
+import 'package:dice_calculator/shared/themes/AppTextStyles.dart';
 import 'package:flutter/material.dart';
 
 class HistoryTile extends StatelessWidget {
@@ -7,9 +9,41 @@ class HistoryTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      title: Text(model.value),
-      subtitle: Text(model.key),
+    return Padding(
+      padding: const EdgeInsets.all(10),
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: AppColors.stroke,
+            width: 1,
+          ),
+          borderRadius: BorderRadius.circular(10),
+          color: AppColors.primary,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(10),
+              child: Center(
+                child: Text(
+                  model.key,
+                  style: AppTextStyles.historyTileTitle,
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10),
+              child: Center(
+                child: Text(
+                  model.value,
+                  style: AppTextStyles.historyTileSubTitle,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
