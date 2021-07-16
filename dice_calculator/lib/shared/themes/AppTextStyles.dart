@@ -13,6 +13,16 @@ class AppTextStyles {
     fontWeight: FontWeight.w500,
     color: AppColors.secondary,
   );
+  static final resultInput = GoogleFonts.varelaRound(
+    fontSize: 30,
+    fontWeight: FontWeight.w500,
+    color: AppColors.secondary,
+  );
+  static final resultInputError = GoogleFonts.varelaRound(
+    fontSize: 30,
+    fontWeight: FontWeight.w500,
+    color: AppColors.negative,
+  );
   static final historyTileTitle = GoogleFonts.varelaRound(
     fontSize: 20,
     fontWeight: FontWeight.w500,

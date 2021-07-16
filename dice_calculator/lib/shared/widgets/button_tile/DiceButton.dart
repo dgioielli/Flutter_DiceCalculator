@@ -1,3 +1,4 @@
+import 'package:dice_calculator/shared/keys/KeyboardKeys.dart';
 import 'package:dice_calculator/shared/themes/AppColors.dart';
 import 'package:dice_calculator/shared/themes/AppTextStyles.dart';
 import 'package:flutter/material.dart';
@@ -13,19 +14,39 @@ class DiceButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onPressed,
-      child: Container(
-        decoration: BoxDecoration(
-          color: AppColors.primary,
-          border: Border.all(
-            color: AppColors.stroke,
-            width: 2,
-          ),
-          borderRadius: BorderRadius.circular(10),
+    var textWidget = getTextWidget();
+    return Container(
+      decoration: BoxDecoration(
+        color: AppColors.primary,
+        border: Border.all(
+          color: AppColors.stroke,
+          width: 2,
         ),
-        child: Center(child: Text(label, style: AppTextStyles.diceButton)),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: OutlinedButton(
+        onPressed: onPressed,
+        child: textWidget,
       ),
     );
+  }
+
+  Widget getTextWidget() {
+    if (label == KeyboardKeys.backspaceKey) {
+      return Center(
+        child: Icon(
+          Icons.backspace,
+          color: AppColors.secondary,
+        ),
+      );
+    } else if (label == KeyboardKeys.cleanKey) {
+      return Center(
+        child: Icon(
+          Icons.cleaning_services,
+          color: AppColors.secondary,
+        ),
+      );
+    }
+    return Center(child: Text(label, style: AppTextStyles.diceButton));
   }
 }

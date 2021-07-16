@@ -1,3 +1,5 @@
+import 'package:dice_calculator/modules/home/calculator/CalculatorPage.dart';
+import 'package:dice_calculator/modules/home/charts_dices/ChartsPage.dart';
 import 'package:dice_calculator/modules/home/dice_roller/DiceRollerPage.dart';
 import 'package:dice_calculator/modules/home/history/HistoryPage.dart';
 import 'package:dice_calculator/shared/themes/AppColors.dart';
@@ -30,14 +32,10 @@ class HomePage extends StatelessWidget {
         body: TabBarView(
           children: [
             DiceRollerPage(),
-            Container(
-              color: Colors.red,
-            ),
+            CalculatorPage(),
             Container(color: Colors.blue),
             HistoryPage(),
-            Container(
-              color: Colors.orange,
-            ),
+            ChartsPage(),
           ],
         ),
       ),

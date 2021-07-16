@@ -9,14 +9,16 @@ class HistoryPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Container(
-        color: AppColors.background,
-        child: Column(
-          children: controller
-              .getAllHistory()
-              .map((e) => HistoryTile(model: e))
-              .toList(),
+    return Container(
+      color: AppColors.background,
+      child: SingleChildScrollView(
+        child: Container(
+          child: Column(
+            children: controller
+                .getAllHistory()
+                .map((e) => HistoryTile(model: e))
+                .toList(),
+          ),
         ),
       ),
     );
