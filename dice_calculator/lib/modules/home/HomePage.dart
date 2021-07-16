@@ -2,6 +2,7 @@ import 'package:dice_calculator/modules/home/calculator/CalculatorPage.dart';
 import 'package:dice_calculator/modules/home/charts_dices/ChartsPage.dart';
 import 'package:dice_calculator/modules/home/dice_roller/DiceRollerPage.dart';
 import 'package:dice_calculator/modules/home/history/HistoryPage.dart';
+import 'package:dice_calculator/modules/home/saved_rolls/SavedRollsPage.dart';
 import 'package:dice_calculator/shared/themes/AppColors.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -33,7 +34,7 @@ class HomePage extends StatelessWidget {
           children: [
             DiceRollerPage(),
             CalculatorPage(),
-            Container(color: Colors.blue),
+            SavedRollsPage(),
             HistoryPage(),
             ChartsPage(),
           ],

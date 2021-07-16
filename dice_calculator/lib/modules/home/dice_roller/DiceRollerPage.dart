@@ -1,8 +1,6 @@
 import 'package:dice_calculator/modules/home/dice_roller/DiceRollerController.dart';
-import 'package:dice_calculator/shared/services/RollDiceService.dart';
 import 'package:dice_calculator/shared/themes/AppColors.dart';
 import 'package:dice_calculator/shared/themes/AppTextStyles.dart';
-import 'package:dice_calculator/shared/widgets/button_tile/diceButton.dart';
 import 'package:dice_calculator/shared/widgets/dice_keyboard/DiceKeyboardWidget.dart';
 import 'package:flutter/material.dart';
 

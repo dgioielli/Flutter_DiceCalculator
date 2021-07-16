@@ -2,6 +2,7 @@ import 'package:dice_calculator/shared/keys/KeyboardKeys.dart';
 import 'package:dice_calculator/shared/themes/AppColors.dart';
 import 'package:dice_calculator/shared/themes/AppTextStyles.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class DiceButton extends StatelessWidget {
   final String label;
@@ -39,10 +40,19 @@ class DiceButton extends StatelessWidget {
           color: AppColors.secondary,
         ),
       );
-    } else if (label == KeyboardKeys.cleanKey) {
+    }
+    if (label == KeyboardKeys.cleanKey) {
       return Center(
         child: Icon(
           Icons.cleaning_services,
+          color: AppColors.secondary,
+        ),
+      );
+    }
+    if (label == KeyboardKeys.saveKey) {
+      return Center(
+        child: Icon(
+          FontAwesomeIcons.magic,
           color: AppColors.secondary,
         ),
       );

@@ -1,11 +1,13 @@
+import 'package:dice_calculator/shared/keys/ResultKeys.dart';
 import 'package:dice_calculator/shared/services/RollDiceService.dart';
 
 class CalculatorService {
   static final _operation = ["+", "-", "D"];
 
   static bool formulaIsValid(String formula) {
-    final result = _getSeparatorTerms(formula);
-    return result.result != "";
+    // final result = _getSeparatorTerms(formula);
+    // return result.result != "";
+    return true;
   }
 
   static String calculate(String formula) {
@@ -48,22 +50,21 @@ class CalculatorService {
 
 abstract class AbsTerm {
   int value = 0;
+  final rolledResults = <String>[];
   String get result => "";
 }
 
-class NullTerm implements AbsTerm {
-  int value = 0;
-  String get result => "";
-}
+class NullTerm extends AbsTerm {}
 
-class ValueTerm implements AbsTerm {
-  int value;
+class ValueTerm extends AbsTerm {
   @override
   String get result => "${value}";
 
   ValueTerm({
-    required this.value,
-  });
+    required int value,
+  }) {
+    super.value = value;
+  }
 }
 
 enum OperationType {
@@ -72,9 +73,7 @@ enum OperationType {
   Dice,
 }
 
-class OperationTerm implements AbsTerm {
-  @override
-  int value = 0;
+class OperationTerm extends AbsTerm {
   @override
   String get result => _execute();
 
@@ -90,28 +89,46 @@ class OperationTerm implements AbsTerm {
 
   _execute() {
     var operationResult = 0;
+    if (term1.result == ResultKeys.invalid ||
+        term2.result == ResultKeys.invalid) return ResultKeys.invalid;
+    term1.rolledResults.forEach((element) => rolledResults.add(element));
+    term2.rolledResults.forEach((element) => rolledResults.add(element));
     if (type == OperationType.Sum)
       operationResult = term1.value + term2.value;
     else if (type == OperationType.Subtraction)
       operationResult = term1.value - term2.value;
     else if (type == OperationType.Dice) {
+      if (term2.value == 0) return ResultKeys.invalid;
+      var quantity = term1.value;
+      if (quantity == 0) quantity = 1;
       var rolledValues = [];
-      for (int i = 0; i < term1.value; i++) {
+      for (int i = 0; i < quantity; i++) {
         final rolledValue = RollDiceService.rolldice(sides: term2.value);
         rolledValues.add(rolledValue);
         operationResult += rolledValue;
       }
+      var rolledResult = "";
+      rolledValues
+          .forEach((element) => rolledResult = "${rolledResult}, ${element}");
+      rolledResult =
+          "${quantity}D${term2.value} = [${rolledResult.replaceFirst(", ", "")}]";
+      rolledResults.add(rolledResult);
     }
     value = operationResult;
-    return "${value}";
+    var diceResults = "";
+    rolledResults
+        .forEach((element) => diceResults = "${diceResults}, ${element}");
+    diceResults = "{${diceResults.replaceFirst(", ", "")}}";
+    return "${diceResults} : ${value}";
   }
 }
 
-class SeparatorTerm implements AbsTerm {
+class SeparatorTerm extends AbsTerm {
   @override
-  int value = 0;
-  @override
-  String get result => "${term1.result};${term2.result}";
+  String get result =>
+      term1.result == ResultKeys.invalid || term2.result == ResultKeys.invalid
+          ? ResultKeys.invalid
+          : "${term1.result};${term2.result}";
 
   final AbsTerm term1;
   final AbsTerm term2;

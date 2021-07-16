@@ -3,7 +3,6 @@ import 'package:dice_calculator/shared/themes/AppColors.dart';
 import 'package:dice_calculator/shared/themes/AppTextStyles.dart';
 import 'package:dice_calculator/shared/widgets/dice_chart/DiceChartWidget.dart';
 import 'package:dice_calculator/shared/widgets/dice_drop_down_button/DiceDropDownButton.dart';
-import 'package:dice_calculator/shared/widgets/test_chart/testChart.dart';
 import 'package:flutter/material.dart';
 
 class ChartsPage extends StatefulWidget {

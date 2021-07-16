@@ -8,14 +8,14 @@ class DiceChartController {
       return 18;
     }
     final ratio = dice.statistics.length / 30.0;
-    return (18 / ratio).toInt();
+    return 18 ~/ ratio;
   }
 
   List<charts.Series<dynamic, String>> getSeriesList(String diceName) {
     final dice = DiceStatisticsRepository().getDice(diceName);
     final data = dice.statistics
         .map(
-          (e) => OrdinalSales(
+          (e) => OrdinalDiceSides(
             "${e.value}",
             e.quantity,
           ),
@@ -23,11 +23,11 @@ class DiceChartController {
         .toList();
 
     return [
-      charts.Series<OrdinalSales, String>(
+      charts.Series<OrdinalDiceSides, String>(
         id: 'Sales',
         colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
-        domainFn: (OrdinalSales sales, _) => sales.year,
-        measureFn: (OrdinalSales sales, _) => sales.sales,
+        domainFn: (OrdinalDiceSides sales, _) => sales.side,
+        measureFn: (OrdinalDiceSides sales, _) => sales.numRolls,
         data: data,
       )
     ];
@@ -35,9 +35,9 @@ class DiceChartController {
 }
 
 /// Sample ordinal data type.
-class OrdinalSales {
-  final String year;
-  final int sales;
+class OrdinalDiceSides {
+  final String side;
+  final int numRolls;
 
-  OrdinalSales(this.year, this.sales);
+  OrdinalDiceSides(this.side, this.numRolls);
 }

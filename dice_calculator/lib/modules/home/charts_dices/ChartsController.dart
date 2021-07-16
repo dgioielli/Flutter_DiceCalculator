@@ -2,6 +2,14 @@ import 'package:dice_calculator/shared/repositories/DiceStatisticsRepository.dar
 import 'package:flutter/cupertino.dart';
 
 class ChartsController {
+  static final ChartsController _singleton = ChartsController._internal();
+
+  factory ChartsController() {
+    return _singleton;
+  }
+
+  ChartsController._internal() {}
+
   final nameDiceNotifier = ValueNotifier<String>("D100");
   String get nameDice => nameDiceNotifier.value;
   set nameDice(String value) => nameDiceNotifier.value = value;
